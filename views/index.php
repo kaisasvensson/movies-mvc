@@ -1,91 +1,85 @@
+<?php
+namespace views\index;
+/* @var $movies */
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="icon" href="../../favicon.ico">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Mitt MVC-projekt</title>
+    <title>TRM</title>
 
-	<!-- Bootstrap core CSS -->
-	<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- style.css -->
+    <link href="../public/css/app.css" rel="stylesheet">
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-			        aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">Project name</a>
-		</div>
-		<div id="navbar" class="navbar-collapse collapse">
-			<form class="navbar-form navbar-right">
-				<div class="form-group">
-					<input type="text" placeholder="Email" class="form-control">
-				</div>
-				<div class="form-group">
-					<input type="password" placeholder="Password" class="form-control">
-				</div>
-				<button type="submit" class="btn btn-success">Sign in</button>
-			</form>
-		</div><!--/.navbar-collapse -->
-	</div>
-</nav>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-	<div class="container">
-		<h1>Hello, world!</h1>
-		<p>This is a template for a simple marketing or informational website. It includes a large callout called a
-			jumbotron and three supporting pieces of content. Use it as a starting point to create something more
-			unique.</p>
-		<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-	</div>
+    <div class="container">
+        <div class="text-center">
+            <h1 class="heading">MOVIES</h1>
+        <hr class="small">
+        </div>
+
+            <div class="viewMovie">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead class="text-center">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>title</th>
+                                    <th>Year</th>
+                                    <th>Director</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <?php
+                                foreach ($allMovies as $value) {
+                                echo "<tr>
+                                    <td>" . $value['id'] . "</td>
+                                    <td>" . $value['title'] . "</td>
+                                    <td>" . $value['year'] . "</td>
+                                    <td>" . $value['director'] . "</td>
+                                    <td><button type=\"submit\" name=\"submit\" class=\"btn btn-default\">delete</button></td>
+                                    </tr>";
+                                };
+                                ?>
+                                </tbody>
+                   </table>
+               </div>
+           </div>
+
+
+
+
+            </div>
+
+            <div class="container text-center">
+
+        <form method="POST" action="#">
+            <div class="form-group">
+                <label>Movie Title</label><br>
+                <input type="text" name="formtitle" placeholder="Title"><br>
+                <label>Year</label><br>
+                <input type="text" name="formyear" placeholder="Year"><br>
+                <label>Director</label><br>
+                <input type="text" name="formdirector" placeholder="Director"><br>
+            </div>
+            <button type="submit" name="submit" class="btn btn-default">Add Movie</button>
+        </form>
+    </div>
 </div>
-
-<div class="container">
-	<!-- Example row of columns -->
-	<div class="row">
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-				condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-				euismod. Donec sed odio dui. </p>
-			<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-		</div>
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-				condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-				euismod. Donec sed odio dui. </p>
-			<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-		</div>
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-				porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-				fermentum massa justo sit amet risus.</p>
-			<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-		</div>
-	</div>
-
-	<hr>
-
-	<footer>
-		<p>&copy; 2016 Company, Inc.</p>
-	</footer>
-</div> <!-- /container -->
+</div>
 
 
 <!-- Bootstrap core JavaScript
@@ -93,5 +87,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="/js/vendor/jquery-3.2.1.min.js"></script>
 <script src="/js/vendor/bootstrap.min.js"></script>
+
 </body>
+
 </html>

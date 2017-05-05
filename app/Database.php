@@ -4,76 +4,103 @@ namespace App;
 
 use PDO;
 
+/*class Database extends PDO {
+
+    public function __construct($config) {
+
+        try {
+            parent::__construct($config['db_type'] . ':host=' . $config['db_host'] . ';dbname=' . $config['db_name'], $config['db_username'], $config['db_password'], $config['charset'], $config['options']);
+            $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            die('ERROR: ' . $e->getMessage());
+        }
+    }*/
+
+
+
 class Database {
-	/**
-	 * @var PDO
-	 */
-	private $pdo;
 
-	public function __construct(PDO $pdo) {
-		$this->pdo = $pdo;
-	}
+    private $pdo;
 
-	/**
-	 * @param integer $id
-	 * @return Model
-	 */
-	public function getById($table, $id) {
-		$stm = $this->pdo->prepare('SELECT * FROM '.$table.' WHERE id = :id');
-		$stm->bindParam(':id', $id);
-		$success = $stm->execute();
-		$row = $stm->fetch(PDO::FETCH_ASSOC);
-		return ($success) ? $row : [];
-	}
+    public function __construct(PDO $pdo) {
+        $this->pdo = $pdo;
+    }
 
-	public function getAll($table) {
-		$stm = $this->pdo->prepare('SELECT * FROM '.$table);
-		$success = $stm->execute();
-		$rows = $stm->fetchAll(PDO::FETCH_ASSOC);
-		return ($success) ? $rows : [];
-	}
+    public function getById($table, $id) {
+        $stm-> $this->pdo->query('SELECT * FROM '.$table.' WHERE id = :id');
+        $stm->bindParam(':id', $id);
+        $success = $stm->execute();
+        $row = $stm->fetch(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
+    }
 
-	public function create($table, $data) {
-		$columns = array_keys($data);
+    public function getAll($table) {
+        $stm = $this->pdo->query('SELECT * FROM '.$table);
+        $stm->bindParam(':id', $id);
+        $success = $stm->execute();
+        $row = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
+    }
 
-		$columnSql = implode(',', $columns);
-		'name,quantity,recipe_difficulty';
+    public function create($table, $data) {
 
-		$bindingSql = ':'.implode(',:', $columns);
-		':name,:quantity,:recipe_difficulty';
+        $columns = array_keys($data);
 
-		$sql = "INSERT INTO $table ($columnSql) VALUES ($bindingSql)";
-		$stm = $this->pdo->prepare($sql);
+        $columnsSql = implode(',', $columns);
+        ':title,:year,:director';
 
-		foreach ($data as $key => $value) {
-			$stm->bindValue(':'.$key, $value);
-		}
-		$status = $stm->execute();
+        $bindingSql = ':' .implode(',', $columns);
+        ':title,:year,:director';
 
-		return ($status) ? $this->pdo->lastInsertId() : false;
-	}
+      /*  $values = array_values($data);
+        $valuesSql = implode(',', $values)*/
 
-	/**
-	 * ÖVERKURS
-	 *
-	 * Skriv den här själv!
-	 * Titta på create för strukturidéer
-	 * Du kan binda parametrar precis som i create
-	 * Klura ut hur du skall sätt ihop rätt textsträng för x=y...
-	 * Implode kommer inte ta dig hela vägen den här gången
-	 * Kanske array_map eller foreach?
-	 */
-	public function update($table, $id, $data) {
-		$columns = array_keys($data);
+       $sql = "INSERT INTO $table ($columnsSql) VALUES ($bindingSql)";
+        $stm = $this->pdo->prepare($sql);
 
-		$sql = "UPDATE $table SET (x=y...) WHERE id = :id";
-	}
+        foreach ($data as $key => $value) {
+            $stm->bindParam(':'.$key, $value);
+        }
+        $status = $stm->execute();
+        return ($status) ? $this->pdo->lastInsertId() : false;
+    }
 
-	/**
-	 * Skriv den här själv!
-	 * Titta på getById för struktur
-	 */
-	public function delete($table, $id) {
+    public function update() {
 
-	}
+    }
+
+    public function delete() {
+
+    }
 }
+
+
+
+/*
+class Database extends PDO {
+
+
+
+    public function __construct($config) {
+
+        try {
+            parent::__construct($config['db_type'] . ':host=' . $config['db_host'] . ';dbname=' . $config['db_name'], $config['db_username'], $config['db_password'], $config['charset'], $config['options']);
+            $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            die('ERROR: ' . $e->getMessage());
+        }
+    }
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
