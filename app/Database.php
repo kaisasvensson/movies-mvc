@@ -57,26 +57,18 @@ class Database
 
     }*/
 
-    public function delete() {
+    public function deleteById($id) {
 
-        if (isset($_POST['delete'])) {
 
-            $sql = "DELETE FROM `movies` where `id` = :id";
-            $stm_delete = $pdo->prepare($sql);
-            $stm_delete->execute(['delete' => $_POST['delete']]);;
+        $stm->$this->pdo->query('DELETE FROM `movies` WHERE `id` = :id');
+        $stm->bindParam(':id', $id);
+        $success = $stm->execute();
+        $row = $stm->fetch(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
         }
 
     }
-}
 
-/*
-public function deleteById($id)
-{
-    $delete_stm = $this->db->prepare("DELETE FROM `albums` WHERE id = :id");
-    return $delete_stm->execute([':id' => $id]);
-}
-
-*/
 
 
 
