@@ -25,30 +25,7 @@ $path = function($uri) {
 
 $dsn = "mysql:host=" . $config['db_host'] . ";dbname=" . $config['db_name'] . ";charset=" . $config['charset'];
 $pdo = new PDO($dsn, $config['db_username'], $config['db_password'], $config['options']);
-
 $db = new Database($pdo);
-
-
-
-// markus exempel
-
-/*$db->create( 'movies', [
-    'title' => 'The Shawshank Redemption',
-    'year' => 2001,
-    'director' => 'Frank Darabont'
-]);*/
-
-/*
-$movie = $db->getById('movies', 1);
-$movies = $db->getAll('movies');
-
-$movie = $movie->getById(1);
-$movies = $movie->getAll();
-$movieModel->create([
-    'title' => 'The Shawshank Redemption',   //exempel på hur det kan se ut
-    'year' => 2001,
-    'director' => 'Frank Darabont'
-]);*/
 
 // Routing
 
@@ -85,10 +62,3 @@ switch ($url) {
         break;
 }
 
-
-
-
-//$controller->createRecipe($recipeModel, $_POST);
-/*       $MovieId = $MovieModel->create($_POST['submit']);*/
-// Dirigera tillbaka till förstasidan efter att vi har sparat.
-// Vi skickar med id:t på receptet som sparades för att kunna använda oss av det i vår vy.
