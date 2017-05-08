@@ -16,7 +16,6 @@ abstract class Model {
     }
 
 
-// markus förslag
 // @param integer
     public function getById($id) {
         return $this->db->getById($this->table, $id);
@@ -27,6 +26,6 @@ abstract class Model {
     }
 
     public function create($data) {
-        return $this->db->create($this, $data);
+        return $this->db->create($this->table, $data);
     }
 }

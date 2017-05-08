@@ -9,7 +9,7 @@ namespace views\index;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>TRM</title>
+    <title>MVC</title>
 
 
     <!-- Bootstrap -->
@@ -50,7 +50,7 @@ namespace views\index;
                                     <td>" . $value['title'] . "</td>
                                     <td>" . $value['year'] . "</td>
                                     <td>" . $value['director'] . "</td>
-                                    <td><button type=\"submit\" name=\"submit\" class=\"btn btn-default\">delete</button></td>
+                                    <td><button type=\"submit\" name=\"delete\" class=\"btn btn-default\">delete</button></td>
                                     </tr>";
                                 };
                                 ?>
@@ -59,27 +59,13 @@ namespace views\index;
                </div>
            </div>
 
-
-
-
             </div>
 
             <div class="container text-center">
 
-        <form method="POST" action="#">
-            <div class="form-group">
-                <label>Movie Title</label><br>
-                <input type="text" name="formtitle" placeholder="Title"><br>
-                <label>Year</label><br>
-                <input type="text" name="formyear" placeholder="Year"><br>
-                <label>Director</label><br>
-                <input type="text" name="formdirector" placeholder="Director"><br>
-            </div>
-            <button type="submit" name="submit" class="btn btn-default">Add Movie</button>
-        </form>
-    </div>
-</div>
-</div>
+<!--                <form action="create-movie"><button type="submit" name="submit" class="btn btn-default">Add Movie</button></form>-->
+                <p><a class="btn btn-primary btn-lg" href="/create-movie" role="button">Add Movie</a></p>
+
 
 
 <!-- Bootstrap core JavaScript
