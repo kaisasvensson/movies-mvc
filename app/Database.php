@@ -32,37 +32,14 @@ class Database
         return ($success) ? $row : [];
     }
 
-    /*public function create($table, $data)
-    {
-            $columns = array_keys($data);
-
-            $columnsSql = implode(',', $columns);
-            /*':title,:year,:director';*/
-
-/*            $bindingSql = ':' . implode(',', $columns);*/
-       /*     ':title,:year,:director';*/
-
-            /*  $values = array_values($data);
-              $valuesSql = implode(',', $values)*/
-
-           /* $sql = "INSERT INTO $table ($columnsSql) VALUES ($bindingSql)";
-            $stm = $this->pdo->prepare($sql);
-
-            foreach ($data as $key => $value) {
-                $stm->bindParam(':' . $key, $value);
-            }
-            $status = $stm->execute();
-            return ($status) ? $this->pdo->lastInsertId() : false;
-        }*/
-
 
     public function create($table, $data) {
         $columns = array_keys($data);
 
         $columnSql = implode(',', $columns);
-        //'name, birthyear, city';
+
         $bindingSql = ':'.implode(',:', $columns);
-        //':Anna, :1989, :Trollhättan';
+
 
         $sql = "INSERT INTO $table ($columnSql) VALUES ($bindingSql)";
         $stm = $this->pdo->prepare($sql);
@@ -71,23 +48,20 @@ class Database
             $stm->bindValue(':'.$key, $value);
         }
         $status = $stm->execute();
-        //mellan ? och : är if och mellan : och ; är false.
+
         return ($status) ? $this->pdo->lastInsertId() : false;
     }
 
-
-
-
-    public function update()
+/*    public function update()
     {
 
-    }
+    }*/
 
     public function delete() {
 
         if (isset($_POST['delete'])) {
 
-            $sql = "DELETE FROM `movies` where `id` = :delete";
+            $sql = "DELETE FROM `movies` where `id` = :id";
             $stm_delete = $pdo->prepare($sql);
             $stm_delete->execute(['delete' => $_POST['delete']]);;
         }
@@ -95,10 +69,14 @@ class Database
     }
 }
 
+/*
+public function deleteById($id)
+{
+    $delete_stm = $this->db->prepare("DELETE FROM `albums` WHERE id = :id");
+    return $delete_stm->execute([':id' => $id]);
+}
 
-
-
-
+*/
 
 
 
