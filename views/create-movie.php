@@ -12,7 +12,7 @@ namespace views\index;
 
     <title>MVC</title>
 
-
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- style.css -->
@@ -28,10 +28,13 @@ namespace views\index;
         <hr class="small">
     </div>
 
-
-
         <div class="container text-center">
 
+    <div class="text-content">
+       <p> Lorem Ipsum är en utfyllnadstext från tryck- och förlagsindustrin. Lorem ipsum har varit standard ända sedan 1500-talet,<br>
+           när en okänd boksättare tog att antal bokstäver och blandade dem för att göra ett provexemplar av en bok. <br>
+           Lorem ipsum har inte bara överlevt fem århundraden, utan även övergången till elektronisk typografi utan större förändringar. </p>
+    </div>
 
             <form method="POST" action="create">
                 <div class="form-group myForm">
