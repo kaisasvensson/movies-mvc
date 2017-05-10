@@ -16,7 +16,7 @@ class Database
 
     public function getById($table, $id)
     {
-        $stm->$this->pdo->query('SELECT * FROM ' . $table . ' WHERE id = :id');
+        $stm = $this->pdo->query('SELECT * FROM '.$table.' WHERE id = :id');
         $stm->bindParam(':id', $id);
         $success = $stm->execute();
         $row = $stm->fetch(PDO::FETCH_ASSOC);
@@ -25,7 +25,7 @@ class Database
 
     public function getAll($table)
     {
-        $stm = $this->pdo->query('SELECT * FROM ' . $table);
+        $stm = $this->pdo->prepare('SELECT * FROM ' . $table);
         $stm->bindParam(':id', $id);
         $success = $stm->execute();
         $row = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -52,25 +52,14 @@ class Database
         return ($status) ? $this->pdo->lastInsertId() : false;
     }
 
-/*    public function update()
+    public function delete($table, $id)
     {
-
-    }*/
-
-    public function deleteById($id) {
-
-
-        $stm->$this->pdo->query('DELETE FROM `movies` WHERE `id` = :id');
+        $stm = $this->pdo->prepare('DELETE FROM ' . $table . ' WHERE `id` = :id');
         $stm->bindParam(':id', $id);
         $success = $stm->execute();
-        $row = $stm->fetch(PDO::FETCH_ASSOC);
-        return ($success) ? $row : [];
-        }
-
+        return ($success);
     }
-
-
-
+}
 
 
 

@@ -11,12 +11,11 @@ namespace views\index;
 
     <title>MVC</title>
 
-
+   <!-- <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">-->
     <!-- Bootstrap -->
-    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
-    <!-- style.css -->
-    <link href="../public/css/app.css" rel="stylesheet">
-    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- app.css -->
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -25,6 +24,7 @@ namespace views\index;
     <div class="container">
         <div class="text-center">
             <h1 class="heading">MOVIES</h1>
+
         <hr class="small">
         </div>
 
@@ -43,17 +43,19 @@ namespace views\index;
                                 </thead>
 
                                 <tbody>
-                                <?php
-                                foreach ($allMovies as $value) {
-                                echo "<tr>
-                                    <td>" . $value['id'] . "</td>
-                                    <td>" . $value['title'] . "</td>
-                                    <td>" . $value['year'] . "</td>
-                                    <td>" . $value['director'] . "</td>
-                                    <td><button type=\"submit\" name=\"delete\" class=\"btn btn-default\">delete</button></td>
-                                    </tr>";
-                                };
-                                ?>
+                                <?php foreach ($allMovies as $value): ?>
+                                    <tr>
+                                    <td><?= $value['id'] ?></td>
+                                    <td><?= $value['title'] ?></td>
+                                    <td><?= $value['year'] ?></td>
+                                    <td><?= $value['director'] ?></td>
+                                    <td>
+                                      <a class="btn btn-default mybutton" href="/delete?id=<?= $value['id'] ?>" role='button'>Delete</a>
+                                    </td>
+                                    </tr>
+
+                                <?php endforeach; ?>
+
                                 </tbody>
                    </table>
                </div>
@@ -63,9 +65,8 @@ namespace views\index;
 
             <div class="container text-center">
 
-<!--                <form action="create-movie"><button type="submit" name="submit" class="btn btn-default">Add Movie</button></form>-->
-                <p><a class="btn btn-primary btn-lg" href="/create-movie" role="button">Add Movie</a></p>
-
+               <form action="/create-movie"><button type="submit" name="submit" class="btn btn-default mybutton">Add Movie</button></form>
+            </div>
 
 
 <!-- Bootstrap core JavaScript

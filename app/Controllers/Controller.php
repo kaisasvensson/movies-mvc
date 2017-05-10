@@ -29,10 +29,6 @@ class Controller {
 	public function setBaseDir($baseDir) {
 		$this->baseDir = $baseDir;
 	}
-
-    public function create($movieModel, $data) {
-        return $movieModel->create($data);
-    }
 }
 
 

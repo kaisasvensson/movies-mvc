@@ -1,5 +1,5 @@
 <?php
-
+use App\Controllers;
 use App\Database;
 use App\Models\MovieModel;
 
@@ -26,15 +26,15 @@ $path = function($uri) {
 $dsn = "mysql:host=" . $config['db_host'] . ";dbname=" . $config['db_name'] . ";charset=" . $config['charset'];
 $pdo = new PDO($dsn, $config['db_username'], $config['db_password'], $config['options']);
 $db = new Database($pdo);
-
+$movieModel = new MovieModel($db);
 // Routing
 
 //$controller = new Controller($baseDir);
 $url = $path($_SERVER['REQUEST_URI']);
 switch ($url) {
     case '/':
-        //$controller->index();
-        $movieModel = new MovieModel($db);
+
+
         $allMovies = $movieModel->getAll();
 
         require $baseDir . '/views/index.php';
@@ -43,12 +43,12 @@ switch ($url) {
     case '/create-movie':
 
         require $baseDir . '/views/create-movie.php';
-
         break;
-    case '/create':
-        $movieModel = new MovieModel($db);
 
-       $newMovie = $movieModel->create([
+    case '/create':
+
+
+        $newMovie = $movieModel->create([
             'title' => $_POST['title'],
             'year' => $_POST['year'],
             'director' => $_POST['director']
@@ -56,6 +56,15 @@ switch ($url) {
 
         header('Location: /?id=' . $newMovie);
         break;
+
+    case '/delete':
+
+
+        $deleteMovie = $movieModel->delete($_GET['id']);
+
+        header('Location: /?id=' . $deleteMovie);
+    break;
+
     default:
         header('HTTP/1.0 404 Not Found');
         echo 'Page not found';

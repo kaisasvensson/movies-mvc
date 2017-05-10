@@ -14,10 +14,9 @@ namespace views\index;
 
 
     <!-- Bootstrap -->
-    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- style.css -->
-    <link href="../public/css/app.css" rel="stylesheet">
-    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -35,7 +34,7 @@ namespace views\index;
 
 
             <form method="POST" action="create">
-                <div class="form-group">
+                <div class="form-group myForm">
                     <label>Movie Title</label><br>
                     <input type="text" name="title" placeholder="Title"><br>
                     <label>Year</label><br>
@@ -43,11 +42,10 @@ namespace views\index;
                     <label>Director</label><br>
                     <input type="text" name="director" placeholder="Director"><br>
                 </div>
-                <button type="submit" name="submit" class="btn btn-default">Add Movie</button>
+                <button type="submit" name="submit" class="btn btn-default mybutton">Add Movie</button>
             </form>
         </div>
     </div>
-</div>
 
 
 <!-- Bootstrap core JavaScript
