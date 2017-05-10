@@ -11,7 +11,7 @@ namespace views\index;
 
     <title>MVC</title>
 
-   <!-- <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">-->
+   <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- app.css -->
@@ -28,7 +28,6 @@ namespace views\index;
         <hr class="small">
         </div>
 
-            <div class="viewMovie">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -50,17 +49,17 @@ namespace views\index;
                                     <td><?= $value['year'] ?></td>
                                     <td><?= $value['director'] ?></td>
                                     <td>
-                                      <a class="btn btn-default mybutton" href="/delete?id=<?= $value['id'] ?>" role='button'>Delete</a>
-                                    </td>
+                                        <a class="btn btn-default mybutton" href="/delete?id=<?= $value['id'] ?>" role='button'>Delete</a>
+                                        <a class="btn btn-default mybutton" href="" role='button'>Update</a>
+
                                     </tr>
 
                                 <?php endforeach; ?>
 
                                 </tbody>
-                   </table>
-               </div>
-           </div>
-
+                         </table>
+                    </div>
+                </div>
             </div>
 
             <div class="container text-center">
