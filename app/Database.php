@@ -60,12 +60,6 @@ class Database
         return ($success);
     }
 
-   /* public function update($table) {
-        $stm = $this->pdo->prepare('UPDATE ' . $table . ' SET value value value = value value value');
-        $stm->bindParam(':id', $id);
-        $success = $stm->execute();
-        return ($success);
-    }*/
 }
 
 
