@@ -53,6 +53,7 @@ class Database
         return ($success);
     }
 
+<<<<<<< HEAD
     public function update($table, $id, $data) {
         $columns = array_keys($data);
         $columns = array_map(function($item) {
@@ -80,6 +81,8 @@ class Database
             }
        }
 
+=======
+>>>>>>> a0870c338baea18ac284f97bd746020689071bcc
 }
 
 
