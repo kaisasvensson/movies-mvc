@@ -11,7 +11,7 @@ namespace views\index;
 
     <title>MVC</title>
 
-   <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- app.css -->
@@ -24,49 +24,43 @@ namespace views\index;
     <div class="container">
         <div class="text-center">
             <h1 class="heading">MOVIES</h1>
-
-        <hr class="small">
         </div>
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table class="table">
-                                <thead class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead class="text-center">
+                            <tr>
+                                <th>Id</th>
+                                <th>title</th>
+                                <th>Year</th>
+                                <th>Director</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($allMovies as $value): ?>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>title</th>
-                                    <th>Year</th>
-                                    <th>Director</th>
-                                </tr>
-                                </thead>
-
-                                <tbody>
-                                <?php foreach ($allMovies as $value): ?>
-                                    <tr>
                                     <td><?= $value['id'] ?></td>
                                     <td><?= $value['title'] ?></td>
                                     <td><?= $value['year'] ?></td>
                                     <td><?= $value['director'] ?></td>
                                     <td>
                                         <a class="btn btn-default mybutton" href="/delete?id=<?= $value['id'] ?>" role='button'>Delete</a>
-                                        <a class="btn btn-default mybutton" href="" role='button'>Update</a>
+                                        <a class="btn btn-default mybutton" href="/update-movie?id=<?= $value['id'] ?>" role='button'>Update</a>
 
-                                    </tr>
+                                </tr>
+                            <?php endforeach; ?>
 
-                                <?php endforeach; ?>
+                        </tbody>
+                    </table>
 
-                                </tbody>
-                         </table>
-                    </div>
                 </div>
             </div>
-
-            <div class="container text-center">
-
-               <form action="/create-movie"><button type="submit" name="submit" class="btn btn-default mybutton">Add Movie</button></form>
-            </div>
-
+        </div>
+        <div class="container text-center">
+            <a class="btn btn-default mybutton" href="/create-movie?id=<?= $value['id'] ?>" role='button'>Add Movie</a>
+        </div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

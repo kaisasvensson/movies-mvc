@@ -1,5 +1,7 @@
 <?php
+
 namespace views\index;
+/* @var $movies */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,18 +27,19 @@ namespace views\index;
             <hr class="small">
         </div>
 
-
         <div class="container text-center">
-            <form method="POST" action="/create">
+        <h1>UPDATE MOVIE</h1>
+            <form method="POST" action="/update">
                 <div class="form-group myForm">
+                    <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
                     <label>Movie Title</label><br>
-                    <input type="text" name="title" placeholder="Title"><br>
+                    <input type="text" name="title" value="<?php echo $movieId['title'] ?>"><br>
                     <label>Year</label><br>
-                    <input type="text" name="year" placeholder="Year"><br>
+                    <input type="text" name="year" value="<?php echo $movieId['year'] ?>"><br>
                     <label>Director</label><br>
-                    <input type="text" name="director" placeholder="Director"><br>
+                    <input type="text" name="director" value="<?php echo $movieId['director'] ?>"><br>
                 </div>
-                <a class="btn btn-default mybutton" type="submit" role='button'>Add Movie</a>
+                <button type="submit" class="btn btn-default mybutton">Update Movie</button>
             </form>
         </div>
     </div>
