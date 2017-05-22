@@ -1,0 +1,53 @@
+@txt-color: black;
+@txt-deco: none;
+@txt-size: 16px;
+@m-bottom: 30px;
+@margin: 50px;
+@padding: 50px;
+@width: 350px;
+
+body {
+  padding-top: @padding;
+  padding-bottom: @padding - 30;
+  font-size: @txt-size;
+  background: url(/images/bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.heading {
+  font-family: 'Monoton', cursive;
+  font-size: 60px;
+  margin-bottom: @m-bottom;
+  text-decoration: @txt-deco;
+}
+
+.heading a {
+  text-decoration: @txt-deco;
+  color: @txt-color;
+
+}
+.heading a:hover {
+  color: #5e5e5e;
+}
+
+.table {
+  font-size: @txt-size;
+  margin: @margin;
+/*  margin-bottom: @m-bottom;*/
+}
+
+.mybutton {
+  font-size: @txt-size;
+}
+
+.myForm {
+  margin: @margin;
+}
+
+input {
+  width: @width;
+  margin: @margin - 40;
+}

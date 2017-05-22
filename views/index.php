@@ -1,5 +1,4 @@
 <?php
-namespace views\index;
 require 'header.php';
 ?>
 
@@ -36,7 +35,7 @@ require 'header.php';
             </div>
         </div>
         <div class="container text-center">
-            <a class="btn btn-default mybutton" href="/create-movie?id=<?= $value['id'] ?>" role='button'>Add Movie</a>
+            <a class="btn btn-default mybutton" href="/create-movie?">Add Movie</a>
         </div>
 
 <?php require 'footer.php'; ?>
