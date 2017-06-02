@@ -1,6 +1,4 @@
-<?php
-require 'header.php';
-?>
+<?php require 'header.php'; ?>
 
         <div class="container text-center">
             <form method="POST" action="/update">
@@ -17,6 +15,5 @@ require 'header.php';
             </form>
         </div>
     </div>
-
 
     <?php require 'footer.php'; ?>
