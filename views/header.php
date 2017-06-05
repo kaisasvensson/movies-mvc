@@ -10,12 +10,13 @@
     <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <!-- app.css -->
-    <!--<link href="/css/style.css" rel="stylesheet">-->
+
     <!--less-->
     <link rel="stylesheet/less" type="text/css" href="/css/styles.less" />
 
     <script src="/js/less.js" type="text/javascript"></script>
+
+
 
 </head>
 
