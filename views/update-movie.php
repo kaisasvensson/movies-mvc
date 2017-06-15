@@ -7,7 +7,7 @@
                     <label>Update Movie Title</label><br>
                     <input type="text" name="title" value="<?php echo $movieId['title'] ?>"><br>
                     <label>Update Year</label><br>
-                    <input type="text" name="year" value="<?php echo $movieId['year'] ?>"><br>
+                        <input type="text" name="year" value="<?php echo $movieId['year'] ?>"><br>
                     <label>Update Director</label><br>
                     <input type="text" name="director" value="<?php echo $movieId['director'] ?>"><br>
                 </div>
