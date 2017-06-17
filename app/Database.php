@@ -14,6 +14,10 @@ class Database
         $this->pdo = $pdo;
     }
 
+    public function getPdo() {
+        return $this->pdo;
+    }
+
     public function getById($table, $id)
     {
         $stm = $this->pdo->prepare('SELECT * FROM '.$table.' WHERE id = :id');

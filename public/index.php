@@ -2,6 +2,7 @@
 use App\Controllers;
 use App\Database;
 use App\Models\MovieModel;
+use App\Models\DirectorModel;
 
 
 //roten i projektet
@@ -27,15 +28,26 @@ $dsn = "mysql:host=" . $config['db_host'] . ";dbname=" . $config['db_name'] . ";
 $pdo = new PDO($dsn, $config['db_username'], $config['db_password'], $config['options']);
 
 $db = new Database($pdo);
-$movieModel = new MovieModel($db);
+
 
 // Routing
 
 //$controller = new Controller($baseDir); kan använda oop till detta i större projekt
 $url = $path($_SERVER['REQUEST_URI']);
+$movieModel = new MovieModel($db);
+$directorModel = new \App\Models\DirectorModel($db);
 switch ($url) {
+
     case '/':
+        $movieData = [];
         $allMovies = $movieModel->getAll();
+        $movies = $movieModel->getAll();
+        foreach ($movies as $movie) {
+            $movieData[] = [
+                'movie' => $movie,
+                'director' => $movieModel->getRelatedDirectors($movie['id'])
+            ];
+        }
         require $baseDir . '/views/index.php';
         break;
 

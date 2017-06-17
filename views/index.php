@@ -36,11 +36,11 @@
                     </table>
 
 
-
+<!-- gör en loop, ny  -->
                     <div class="row">
                         <div id="intro" class="collapse">
                             <div class="col-xs-3 col-md-4">
-                                    <img class="img-circle director-img" src="<?php echo $movieId['img_url'] ?>" alt="">
+                                    <img class="img-circle director-img" src="<?= $movieId['img_url'] ?>" alt="">
                             </div>
                             <div style="background-color: white; border-radius: 10px; margin: 40px; padding: 20px; height: 300px;">
                             <h3>test</h3><br>

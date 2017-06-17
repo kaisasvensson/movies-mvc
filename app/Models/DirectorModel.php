@@ -11,5 +11,5 @@ namespace App\Models;
 
 class DirectorModel extends Model {
 
-        protected $table = 'directors';
+        protected $table = 'director';
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Database;
+use PDO;
 
 abstract class Model {
 
@@ -34,5 +35,13 @@ abstract class Model {
 
     public function update($id, $data) {
         return $this->db->update($this->table, $id, $data);
+    }
+
+    protected function getRelated($table, $column, $id) {
+        $pdo = $this->db->getPdo();
+        $stmt = $pdo->prepare("SELECT * FROM $table WHERE $column = :id");
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
