@@ -13,51 +13,53 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($allMovies as $value): ?>
+                            <?php foreach ($movieData as $value): ?>
                                 <tr>
-                                    <td><?= $value['id'] ?></td>
-                                    <td><?= $value['title'] ?></td>
-                                    <td><?= $value['year'] ?></td>
-                                    <td><?= $value['director'] ?></td>
+                                    <td><?= $value['movie']['id'] ?></td>
+                                    <td><?= $value['movie']['title'] ?></td>
+                                    <td><?= $value['movie']['year'] ?></td>
+                                    <td><?= $value['movie']['director'] ?></td>
                                     <td>
-                                        <div class="row-fluid summary">
+                                       <div class="row-fluid summary">
                                             <div class="span1">
-                                                <span class="glyphicon glyphicon-info-sign" data-toggle="collapse" data-target="#intro"></span>
+                                                <span class="glyphicon glyphicon-info-sign" data-toggle="collapse" data-target="#intro"<?= $value['movie']['id']?>></span>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <a class="btn btn-default mybutton" href="/delete?id=<?= $value['id'] ?>" role='button'>Delete</a>
-                                        <a class="btn btn-default mybutton" href="/update-movie?id=<?= $value['id'] ?>" role='button'>Update</a>
+                                        <a class="btn btn-default mybutton" href="/delete?id=<?= $value['movie']['id'] ?>" role='button'>Delete</a>
+                                        <a class="btn btn-default mybutton" href="/update-movie?id=<?= $value['movie']['id'] ?>" role='button'>Update</a>
                                 </tr>
-                            <?php endforeach; ?>
+                            <tr>
+                            <?php foreach ($value['director'] as $director) { ?>
+                                <!-- gör en loop, använd $value['directors'] as $director -->
+                                <div class="row">
+                                    <div id="intro" class="collapse">
+                                        <div class="col-xs-3 col-md-4">
+                                            <img class="img-circle director-img" src="<?= $director['img_url'] ?>" alt="">
+                                        </div>
+                                        <div style="background-color: white; border-radius: 10px; margin: 40px; padding: 20px; height: 300px;">
+                                            <h3><?= $director['director'] ?></h3><br>
+                                            <p><?= $director['about_director'] ?></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            <?php } ?>
+                            </tr>
 
                         </tbody>
+                        <?php endforeach; ?>
                     </table>
-
-
-<!-- gör en loop, ny  -->
-                    <div class="row">
-                        <div id="intro" class="collapse">
-                            <div class="col-xs-3 col-md-4">
-                                    <img class="img-circle director-img" src="<?= $movieId['img_url'] ?>" alt="">
-                            </div>
-                            <div style="background-color: white; border-radius: 10px; margin: 40px; padding: 20px; height: 300px;">
-                            <h3>test</h3><br>
-                            <p>har varit standard ända sedan 1500-talet, när en okänd boksättare
-                                tog att antal bokstäver och blandade dem för att göra ett provexemplar av en bok.
-                                Lorem ipsum har inte bara överlevt fem århundraden, utan även övergången till elektronisk
-                                typografi utan större förändringar. Det blev allmänt känt på</p>
-                            </div>
-
-                        </div>
-                    </div>
 
 
 
                 </div>
             </div>
         </div>
+
+
         <div class="container text-center">
             <a class="btn btn-default mybutton add" href="/create-movie?">Add Movie</a>
         </div>
