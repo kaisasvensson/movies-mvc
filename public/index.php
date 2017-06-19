@@ -61,14 +61,13 @@ switch ($url) {
             'year' => $_POST['year'],
             'director' => $_POST['director']
         ]);
-
         header('Location: /?id=' . $newMovie);
         break;
 
     case '/delete-movie':
         $deleteMovie = $movieModel->delete($_GET['id']);
         header('Location: /?id=' . $deleteMovie);
-    break;
+        break;
 
     case '/delete-director':
         $deleteDirector = $directorModel->delete($_GET['id']);
@@ -81,7 +80,7 @@ switch ($url) {
         break;
 
     case '/update-movie':
-        $updateMovie = $movieModel->update($_POST['id'], [
+        $movieUpdate = $movieModel->update($_POST['id'], [
             'title' => $_POST['title'],
             'year' => $_POST['year'],
             'director' => $_POST['director']
@@ -90,7 +89,7 @@ switch ($url) {
         break;
 
     case '/update-director-view':
-        $director = $directorModel->getById($_GET['id']);
+        $directorId = $directorModel->getById($_GET['id']);
         require $baseDir . '/views/update-director.php';
         break;
 
