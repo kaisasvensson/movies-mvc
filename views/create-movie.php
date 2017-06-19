@@ -1,7 +1,7 @@
 <?php require 'header.php'; ?>
 
         <div class="container text-center">
-            <form id="create-movie" method="POST" action="/create">
+            <form id="create-movie-view" method="POST" action="/create-movie">
                 <div class="form-group myForm">
                     <label>Movie Title</label><br>
                     <input type="text" name="title" placeholder="Title"><br>

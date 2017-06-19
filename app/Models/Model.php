@@ -37,11 +37,15 @@ abstract class Model {
         return $this->db->update($this->table, $id, $data);
     }
 
-    protected function getRelated($table, $column, $id) {
+    protected function getRelated($table, $relationId, $id) {
         $pdo = $this->db->getPdo();
-        $stmt = $pdo->prepare("SELECT * FROM $table WHERE $column = :id");
-        $stmt->bindValue(':id', $id);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stm = $pdo->prepare("SELECT * FROM $table WHERE $relationId = :id");
+        $stm->bindValue(':id', $id);
+        $stm->execute();
+        return $stm->fetchAll(PDO::FETCH_ASSOC);
+        /*$success = $stm->execute();
+        $row = $stm->fetch(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];*/
+
     }
 }

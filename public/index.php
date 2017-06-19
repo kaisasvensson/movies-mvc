@@ -51,11 +51,11 @@ switch ($url) {
         require $baseDir . '/views/index.php';
         break;
 
-    case '/create-movie':
+    case '/create-movie-view':
         require $baseDir . '/views/create-movie.php';
         break;
-    case '/create':
 
+    case '/create-movie':
         $newMovie = $movieModel->create([
             'title' => $_POST['title'],
             'year' => $_POST['year'],
@@ -65,22 +65,42 @@ switch ($url) {
         header('Location: /?id=' . $newMovie);
         break;
 
-    case '/delete':
+    case '/delete-movie':
         $deleteMovie = $movieModel->delete($_GET['id']);
         header('Location: /?id=' . $deleteMovie);
     break;
 
-    case '/update-movie':
+    case '/delete-director':
+        $deleteDirector = $directorModel->delete($_GET['id']);
+        header('Location: /?id' . $deleteDirector);
+        break;
+
+    case '/update-movie-view':
         $movieId = $movieModel->getById($_GET['id']);
         require $baseDir . '/views/update-movie.php';
         break;
-    case '/update':
+
+    case '/update-movie':
         $updateMovie = $movieModel->update($_POST['id'], [
             'title' => $_POST['title'],
             'year' => $_POST['year'],
             'director' => $_POST['director']
         ]);
         header('Location: /?id=' . $_POST['id']);
+        break;
+
+    case '/update-director-view':
+        $director = $directorModel->getById($_GET['id']);
+        require $baseDir . '/views/update-director.php';
+        break;
+
+    case '/update-director':
+        $directorUpdate = $directorModel->update($_POST['id'], [
+            'name' => $_POST['name'],
+            'img_url' => $_POST['img_url'],
+            'about' => $_POST['about']
+        ]);
+        header('Location: /?id=' . $directorUpdate);
         break;
 
     default:
