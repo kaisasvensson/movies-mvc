@@ -11,7 +11,7 @@
                     <input type="text" name="director" placeholder="Director"><br>
                 </div>
                 <p style="display:none;" id="error-message">Fill in the form!</p>
-                <button type="submit" name="submit" class="btn btn-default mybutton">Add Movie</button>
+                <button type="submit" name="submit" class="btn btn-default mybutton add">Add Movie</button>
             </form>
         </div>
     </div>

@@ -64,6 +64,21 @@ switch ($url) {
         header('Location: /?id=' . $newMovie);
         break;
 
+    case '/create-director-view':
+        $allMovies = $movieModel->getAll();
+        require $baseDir . '/views/create-director.php';
+        break;
+
+    case '/create-director':
+        $directorCreate = $directorModel->create([
+            'movies_id' => $_POST['movies_id'],
+            /*'name' => $_POST['name'],*/
+            'img_url' => $_POST['img_url'],
+            'about' => $_POST['about']
+        ]);
+        header('Location: /?id=' . $directorCreate);
+        break;
+
     case '/delete-movie':
         $deleteMovie = $movieModel->delete($_GET['id']);
         header('Location: /?id=' . $deleteMovie);

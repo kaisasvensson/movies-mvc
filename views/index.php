@@ -24,10 +24,13 @@
                         </td>
 
                         <td>
+                            <a class="btn btn-default mybutton" href="/create-director-view?id=<?= $value['movie']['id'] ?>"
+                               role='button'>Add more info</a>
                             <a class="btn btn-default mybutton" href="/delete-movie?id=<?= $value['movie']['id'] ?>"
                             role='button'>Delete</a>
                             <a class="btn btn-default mybutton" href="/update-movie-view?id=<?= $value['movie']['id'] ?>"
                             role='button'>Update</a>
+
                         </td>
                     </tr>
 
@@ -39,12 +42,12 @@
                                         <div class="modal-content"  style="border-radius: 0;">
                                             <div class="text-center">
                                                 <h2 class="modal-title" style="margin: 20px;"><?= $director['name'] ?></h2>
-                                                <img src="<?= $director['img_url'] ?>" alt="director" style=" border: 1px solid black;">
+                                                <img src="<?= $director['img_url'] ?>" alt="director"/>
                                             </div>
                                             <div class="modal-body">
                                                 <p class="lead" style="color:dimgrey;font-size: 18px; margin: 20px;"><?= $director['about'] ?></p>
                                             </div>
-                                            <div class="modal-footer">
+                                            <div class="text-center" style="margin: 20px;">
                                                 <a type="button" class="btn btn-default" href="/update-director-view?id=<?= $director['id'] ?>">Update</a>
                                                 <a type="button" class="btn btn-default" href="/delete-director?id=<?= $director['id'] ?>" >Delete</a>
                                                 <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
@@ -62,7 +65,10 @@
     </div>
         <div class="container text-center">
             <a class="btn btn-default mybutton add" href="/create-movie-view?">Add Movie</a>
+      <!--      <a class="btn btn-default mybutton add" href="/create-director-view?id=<?/*= $value['movie']['id'] */?>"
+               role='button'>Add director info</a>-->
         </div>
 </div>
+
 
 <?php require 'footer.php'; ?>
